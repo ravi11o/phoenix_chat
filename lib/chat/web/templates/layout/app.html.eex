@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Chat!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <%= link "Chat", to: page_path(@conn, :index), class: "brand-logo" %>
+          <ul class="right hide-on-med-and-down">
+            <%= if @current_user do %>
+              <li>
+                <div class="chip">
+                  <img src="<%= @current_user.avatar %>">
+                  <%= @current_user.name %>
+                </div>
+              </li>
+              <li><%= link "Logout", to: auth_path(@conn, :delete), method: "delete" %>
+                
+              </li>
+            <% else %>
+              <li><%= link "Login with Google", to: auth_path(@conn, :request, "google") %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script>window.userToken = "<%= assigns[:user_token] %>";</script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  </body>
+</html>

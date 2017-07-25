@@ -1,0 +1,27 @@
+<%= if @current_user do %>
+  <div class="fluid-container">
+    <h4><%= gettext "Welcome to %{name}!", name: "Chat App" %></h4>
+    <div class="main-container">
+      <div class="msg-wrapper">
+        <div class="item msg-container" id="msg-container"></div>
+        <div class="item online-user">
+          <ul>
+            <li>Suraj Kumar</li>
+            <li>Sachin Kumar</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item msg-input">
+        <textarea id="msg-input"></textarea> 
+        <button class="btn" id="msg-submit">Submit</button>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="jumbotron">
+    <%= link "Login with Google", to: auth_path(@conn, :request, "google"), class: "btn btn-primary" %>
+  </div>
+<% end %>
+  
+
+

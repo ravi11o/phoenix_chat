@@ -1,0 +1,52 @@
+/* This file is for your main application css. */
+
+.container {
+  background: #eee;
+  height: 90vh;
+}
+
+.main-container {
+  display: flex;
+  height: 450px;
+  border: 2px solid #ccc;
+  flex-direction: column;
+}
+
+.msg-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 350px;
+}
+
+.item {
+  border: 5px solid #fff;
+}
+
+.msg-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100px;
+  align-items: center;
+}
+
+.msg-input textarea {
+  flex: 8;
+}
+
+.msg-input button {
+  margin-left: 10px;
+  flex: 2;
+}
+
+.msg-container {
+  flex: 12;
+  padding: 10px;
+}
+
+.online-user {
+  flex: 4;
+  padding: 10px;
+}
+
